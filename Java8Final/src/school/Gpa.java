@@ -1,20 +1,26 @@
 package school;
 
+import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Set;
 
-
-public class Gpa {
+public class Gpa {    
+    HashMap<String, Integer> subjectGpa;  
     
-    public static void main(String[] args) {
+    public Gpa() {        
+        subjectGpa = new HashMap();
+        subjectGpa.put("THAI",4);
+        subjectGpa.put("MATH",4);        
+        subjectGpa.put("Eng",4);
+    }
     
-        System.out.println("Enter student number: ");
-        
-        //wait for input
-        Scanner scanner = new Scanner(System.in);
-        int numberOfStudent = scanner.nextInt();
-        
-        for( int i=0; i < numberOfStudent; i++) {
-          System.out.println("breka")  ;
-        }        
+    public double getGpa() {
+        int numberOfSubject = subjectGpa.size();
+        Set<String> keys = subjectGpa.keySet();
+          double total =0;
+          for (String subjName : keys) {                                
+                total += subjectGpa.get(subjName);
+          }  
+          return total/numberOfSubject;
     }
 }
